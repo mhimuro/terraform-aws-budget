@@ -27,6 +27,7 @@ variable "budgets" {
             threshold_type # - What kind of threshold is defined. Can be PERCENTAGE OR ABSOLUTE_VALUE.
             notification_type # - What kind of budget value to notify on. Can be ACTUAL or FORECASTED.
             subscriber_email_addresses # - E-Mail addresses to notify.
+            subscriber_sns_topic_arns  # - SNS topics to notify.
           },
         }
         extra_notifications # - A map of objects containing Additional Budget Notifications (will be combined with var.default_notifications)
@@ -82,6 +83,7 @@ variable "budgets" {
             comparison_operator        = "GREATER_THAN"
             notification_type          = "ACTUAL"
             subscriber_email_addresses = ["test@example.com"]
+            subscriber_sns_topic_arns  = ["arn:aws:sns:us-east-1:012345678901:example"]
             threshold                  = 80
             threshold_type             = "PERCENTAGE"
           },
