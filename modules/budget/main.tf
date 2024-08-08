@@ -29,6 +29,7 @@ resource "aws_budgets_budget" "this" {
       threshold_type             = notification.value.threshold_type
       notification_type          = notification.value.notification_type
       subscriber_email_addresses = distinct(concat(lookup(notification.value, "subscriber_email_addresses", []), var.extra_email_addresses))
+      subscriber_sns_topic_arns  = distinct(lookup(notification.value, "subscriber_sns_topic_arns", []))
     }
   }
 
